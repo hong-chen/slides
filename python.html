@@ -244,9 +244,8 @@
 
                     <section data-markdown>
                         <script type="reveal.js/text/template">
-                            ### Example
-                            - FTP to MODIS data archive
-                              - initiate ftp
+                            ### Example (MODIS)
+                            - Initiate ftp
                             <br>
 
                             ```python
@@ -262,8 +261,7 @@
                     <section data-markdown>
                         <script type="reveal.js/text/template">
                             ### Example _cont._
-                            - FTP to MODIS data archive
-                              - anonymous login
+                            - Anonymous login
                             <br>
 
                             ```python
@@ -275,8 +273,7 @@
                     <section data-markdown>
                         <script type="reveal.js/text/template">
                             ### Example _cont._
-                            - FTP to MODIS data archive
-                              - go to directory
+                            - Go to directory
                             <br>
 
                             ```python
@@ -289,8 +286,7 @@
                     <section data-markdown>
                         <script type="reveal.js/text/template">
                             ### Example _cont._
-                            - FTP to MODIS data archive
-                              - store listed file names
+                            - Store listed file names
                             <br>
 
                             ```python
@@ -303,14 +299,14 @@
                     <section data-markdown>
                         <script type="reveal.js/text/template">
                             ### Example _cont._
-                            - FTP to MODIS data archive
-                              - download data and quit ftp
+                            - Download data and quit ftp
                             <br>
 
                             ```python
                             for fname in fnames:
                                 ftpMODIS.retrbinary('RETR %s' % fname, \
                                                     open(fname, 'wb').write)
+
                             ftpMODIS.quit()
                             ```
                         </script>
