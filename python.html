@@ -245,11 +245,73 @@
                     <section data-markdown>
                         <script type="reveal.js/text/template">
                             ### Example
+                            - FTP to MODIS data archive
+                              - initiate ftp
+                            <br>
 
                             ```python
                             from ftplib import FTP
 
-                            FTP.login()
+                            # ftp initiate
+                            ftpSite  = 'ladsftp.nascom.nasa.gov'
+                            ftpMODIS = FTP(ftpSite)
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### Example _cont._
+                            - FTP to MODIS data archive
+                              - anonymous login
+                            <br>
+
+                            ```python
+                            ftpMODIS.login()
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### Example _cont._
+                            - FTP to MODIS data archive
+                              - go to directory
+                            <br>
+
+                            ```python
+                            # go to the data directory we interested in
+                            ftpMODIS.cwd('/allData/6/MOD06_L2/2008/001')
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### Example _cont._
+                            - FTP to MODIS data archive
+                              - store listed file names
+                            <br>
+
+                            ```python
+                            # list and store data file names
+                            fnames = ftpMODIS.nlst()
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### Example _cont._
+                            - FTP to MODIS data archive
+                              - download data and quit ftp
+                            <br>
+
+                            ```python
+                            for fname in fnames:
+                                ftpMODIS.retrbinary('RETR %s' % fname, \
+                                                    open(fname, 'wb').write)
+                            ftpMODIS.quit()
                             ```
                         </script>
                     </section>
