@@ -50,10 +50,59 @@
                     </script>
                 </section>
 
-                <!-- Create a Repository -->
+                <!-- Install Git -->
                 <section>
                     <section>
-                        <p style="font-size:300%;">Create a Repository</p>
+                        <p style="font-size:300%;">Git Init.</p>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            __Install Git__
+                            <br>
+
+                            - On Mac (use [homebrew](https://brew.sh))
+                            ```bash
+                            brew update
+                            brew install git
+                            ```
+                            - On RedHat (use [yum](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/ch-yum.html))
+                            ```bash
+                            yum update
+                            yum install git
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            __Setup__
+                            <br>
+
+                            - Add user name
+                            ```bash
+                            git config --global user.name "Hong Chen"
+                            ```
+
+                            - Add user Email
+                            ```bash
+                            git config --global user.email "me@hongchen.cz"
+                            ```
+
+                            - Remember password (Optional)
+                            ```bash
+                            git config credential.helper 'cache --timeout=3600'
+                            ```
+
+                        </script>
+                    </section>
+
+                </section>
+
+                <!-- Repository -->
+                <section>
+                    <section>
+                        <p style="font-size:300%;">Repository</p>
                     </section>
 
                     <section data-markdown>
@@ -93,229 +142,92 @@
                             ```
                         </script>
                     </section>
-
-                    <section data-markdown>
-                        <script type="reveal.js/text/template">
-                            ### Example 2
-                            - Path manipulation
-                            <br>
-
-                            ```python
-                            import os
-
-                            if os.path.exists('/some/path/test.py'):
-                                # ... do something
-
-                            if not os.path.isdir('/some/path/test.py'):
-                                # ... do something
-
-                            if not os.path.isfile('/some/path/test.py'):
-                                # ... do something
-                            ```
-                        </script>
-                    </section>
                 </section>
 
-                <!-- sys -->
+                <!-- Install Git -->
                 <section>
                     <section>
-                        <p style="font-size:400%;"><a
-                            href="https://docs.python.org/3/library/sys.html">sys</a></p>
+                        <p style="font-size:300%;">How to Use</p>
                     </section>
 
                     <section data-markdown>
                         <script type="reveal.js/text/template">
-                            ### How to Use
-
-                            ```python
-                            import sys
-                            ```
-                        </script>
-                    </section>
-
-                    <section data-markdown>
-                        <script type="reveal.js/text/template">
-                            ### Example 1
-                            - Grab system information
-                            <br>
-
-                            ```python
-                            import sys
-
-                            print(sys.platform)  # 'win32', 'linux', 'cygwin', 'darwin'
-                            print(sys.byteorder) # 'little-endian', 'big-endian'
-                            ```
-                        </script>
-                    </section>
-
-                    <section data-markdown>
-                        <script type="reveal.js/text/template">
-                            ### Example 2
-                            - Get arguments from command line
+                            __Show the Working Tree Status__
                             <br>
 
                             ```bash
-                            # the following is a shell command line (after >)
-                            >python test.py arg1 arg2 arg3
+                            git status
                             ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            __List Current Branch__
                             <br>
 
-                            ```python
-                            import sys
+                            ```bash
+                            git branch
+                            ```
+                        </script>
+                    </section>
 
-                            print(sys.arg[0]) # 'test.py'
-                            print(sys.arg[1]) # 'arg1'
-                            print(sys.arg[2]) # 'arg2'
-                            print(sys.arg[3]) # 'arg3'
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            __Create Current Branch__
+                            <br>
+
+                            ```bash
+                            git branch develop/test
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            __Go to a Branch__
+                            <br>
+
+                            ```bash
+                            git checkout develop/test
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            __Add File Contents to the Index__
+                            <br>
+
+                            ```bash
+                            git add test.py
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            __Record Changes to the Repository__
+                            <br>
+
+                            ```bash
+                            git commit -m "initial commit for test.py"
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            __Update Remote Refs along with Associated Objects__
+                            <br>
+
+                            ```bash
+                            git push -u origin develop/test
                             ```
                         </script>
                     </section>
                 </section>
 
-
-                <!-- glob -->
-                <section>
-                    <section>
-                        <p style="font-size:400%;"><a href="https://docs.python.org/3/library/glob.html">glob</a></p>
-                    </section>
-
-                    <section>
-                        <h3>How to Use</h3>
-                        <pre><code class="python">import glob</code></pre>
-                    </section>
-
-                    <section data-markdown>
-                        <script type="reveal.js/text/template">
-                            ### Example
-                            - Grab the the pathnames matching given pattern
-                            <br>
-
-                            ```python
-                            import glob
-
-                            # return all pathnames
-                            fnames = glob.glob('/some/path/data/*')
-
-                            # return pathnames end with '.nc'
-                            fnames = glob.glob('/some/path/data/*.nc')
-
-                            # return pathnames has patterns of '2000-01-01' and '.nc'
-                            fnames = glob.glob('/some/path/data/*2000-01-01*.nc')
-
-                            # How about this one?
-                            fnames = glob.glob('/some/path/data/*2000-01-??*.nc')
-                            ```
-                        </script>
-                    </section>
-
-                    <section data-markdown>
-                        <script type="reveal.js/text/template">
-                            ### Example _cont._
-                            - Do something with the returned pathnames
-                            <br>
-
-                            ```python
-                            import glob
-
-                            fnames = glob.glob('/some/path/data/*2000-01-01*.nc')
-
-                            # count how many pathnames
-                            NFile  = len(fnames)
-
-                            # read in the data one by one
-                            for fname in fnames:
-                                # ... do something
-                            ```
-                        </script>
-                    </section>
-                </section>
-
-                <!-- ftplib -->
-                <section>
-                    <section>
-                        <p style="font-size:400%;"><a href="https://docs.python.org/3/library/os.html">ftplib</a></p>
-                    </section>
-
-                    <section data-markdown>
-                        <script type="reveal.js/text/template">
-                            ### How to Use
-
-                            ```python
-                            from ftplib import FTP
-                            ```
-                        </script>
-                    </section>
-
-                    <section data-markdown>
-                        <script type="reveal.js/text/template">
-                            ### Example (MODIS)
-                            - Initiate ftp
-                            <br>
-
-                            ```python
-                            from ftplib import FTP
-
-                            # ftp initiate
-                            ftpSite  = 'ladsftp.nascom.nasa.gov'
-                            ftpMODIS = FTP(ftpSite)
-                            ```
-                        </script>
-                    </section>
-
-                    <section data-markdown>
-                        <script type="reveal.js/text/template">
-                            ### Example _cont._
-                            - Anonymous login
-                            <br>
-
-                            ```python
-                            ftpMODIS.login()
-                            ```
-                        </script>
-                    </section>
-
-                    <section data-markdown>
-                        <script type="reveal.js/text/template">
-                            ### Example _cont._
-                            - Go to directory
-                            <br>
-
-                            ```python
-                            # go to the data directory we interested in
-                            ftpMODIS.cwd('/allData/6/MOD06_L2/2008/001')
-                            ```
-                        </script>
-                    </section>
-
-                    <section data-markdown>
-                        <script type="reveal.js/text/template">
-                            ### Example _cont._
-                            - Store listed file names
-                            <br>
-
-                            ```python
-                            # list and store data file names
-                            fnames = ftpMODIS.nlst()
-                            ```
-                        </script>
-                    </section>
-
-                    <section data-markdown>
-                        <script type="reveal.js/text/template">
-                            ### Example _cont._
-                            - Download data and quit ftp
-                            <br>
-
-                            ```python
-                            for fname in fnames:
-                                ftpMODIS.retrbinary('RETR %s' % fname, \
-                                                    open(fname, 'wb').write)
-
-                            ftpMODIS.quit()
-                            ```
-                        </script>
-                    </section>
-                </section>
 
                 <!-- End -->
                 <section style="text-align: left;">
