@@ -1,2 +1,2 @@
-# slides
-slides using reveal.js
+## slides
+Slides using reveal.js
