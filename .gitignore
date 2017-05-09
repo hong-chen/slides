@@ -1,4 +1,5 @@
 .backup
 test*
 defense*
+data*
 .DS_Store
