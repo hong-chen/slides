@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>COMPS II - Chen</title>
+
+        <meta name="description" content="COMPSII">
+        <meta name="author" content="Hong Chen">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="my/reveal.js/css/theme/science.css" id="theme">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'reveal.js/css/print/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+               }
+        </script>
+    </head>
+
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+                <section>
+                    <h4>Use Aircraft Measurements to Improve Passive Remote Sensing of Clouds in the Arctic</h4>
+                    <br>
+                    <p><span style="font-size:20px; color:gray">by</span></p>
+                    <p><span style="font-size:20px">Hong Chen</span></p>
+                    </script>
+                </section>
+
+                <section>
+                    <h3>Outline</h3>
+                    <section>
+                        <ul>
+                            <li style="font-size:32px">Background</li>
+                            <li style="font-size:32px">Data & Method</li>
+                            <li style="font-size:32px">Results</li>
+                            <li style="font-size:32px">Summary</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <h3> <span style="color:deepskyblue">S</span>olar <span style="color:deepskyblue">S</span>pectral <span style="color:deepskyblue">F</span>lux <span style="color:deepskyblue">R</span>adiometer (<span style='color:deepskyblue'>SSFR</span>)</h3>
+
+                    <section>
+                        <h4>Specifications</h4>
+                        <br>
+                        <ul>
+                            <li style="font-size:35px">Spectral range: 300nm - 2200nm</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h4>Equations for Radiative Properties</h4>
+                        <br>
+                        <ul>
+                            <li style="font-size:25px">Albedo: $\alpha(\lambda) = \dfrac{F^\uparrow(\lambda)}{F^\downarrow(\lambda)}$</li>
+                            <li style="font-size:25px">Transmittance: $T(\lambda) = \dfrac{F^\downarrow_{bot.}(\lambda)}{F^\downarrow_{top}(\lambda)}$</li>
+                            <li style="font-size:25px">Reflectance: $R(\lambda) = \dfrac{F^\uparrow_{top}(\lambda)-F^\uparrow_{bot.}(\lambda)}{F^\downarrow_{top}(\lambda)}$</li>
+                            <li style="font-size:25px">Absorptance: $A(\lambda) = \dfrac{(F^\downarrow_{top}(\lambda)-F^\uparrow_{top}(\lambda))-(F^\downarrow_{bot.}(\lambda)-F^\uparrow_{bot.}(\lambda))}{F^\downarrow_{top}(\lambda)}$</li>
+                        </ul>
+                    </section>
+
+
+                </section>
+
+
+                <!--</section>-->
+                <section>
+                    <h3><span style="color:deepskyblue">A</span>rctic <span style="color:deepskyblue">R</span>adiation-<span style="color:deepskyblue">I</span>ceBridge <span style="color:deepskyblue">S</span>ea & Ice <span style="color:deepskyblue">E</span>xperiment (<span style='color:deepskyblue'>ARISE</span>)</h3>
+                    <section>
+                        <img style="float: left"  width="450" data-src="data/comps/map_trk_2014-09-04.png"></img>
+                        <img style="float: right" width="450" data-src="data/comps/map_trk_2014-09-19.png"></img>
+                    </section>
+
+                    <section>
+                        <br>
+                        <br>
+                        <video width="750" data-autoplay src="data/comps/sample-video.mp4"></video>
+                    </section>
+                </section>
+
+                <section>
+                    <h3 style="font-size:25px"><span style="color:deepskyblue">O</span>bse<span style="color:deepskyblue">R</span>vations of <span style="color:deepskyblue">A</span>erosols above <span style="color:deepskyblue">CL</span>ouds and their int<span style="color:deepskyblue">E</span>raction<span style="color:deepskyblue">S</span> (<span style='color:deepskyblue'>ORACLES</span>)</h3>
+
+                </section>
+
+                <section>
+                    <h2>The End</h2>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: false,
+                progress: true,
+                history: true,
+                center: true,
+                slideNumber: true,
+                transition: 'convex', // none/fade/slide/convex/concave/zoom
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true },
+                    { src: 'reveal.js/plugin/math/math.js',async: true}
+                ]
+            });
+        </script>
+    </body>
+</html>
