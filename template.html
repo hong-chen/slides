@@ -1,66 +1,65 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-        <title>to be modified</title>
+    <title>to be modified</title>
 
-        <meta name="description" content="to to modified">
-        <meta name="author" content="Hong Chen">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Hong Chen">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <link rel="stylesheet" href="reveal.js/css/reveal.css">
-        <link rel="stylesheet" href="my/reveal.js/css/theme/science.css" id="theme">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="my/reveal.js/css/theme/science.css" id="theme">
 
-        <!-- Theme used for syntax highlighting of code -->
-        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
-        <script>
-            if( window.location.search.match( /print-pdf/gi ) ) {
-                var link = document.createElement( 'link' );
-                link.rel = 'stylesheet';
-                link.type = 'text/css';
-                link.href = 'reveal.js/css/print/pdf.css';
-                document.getElementsByTagName( 'head' )[0].appendChild( link );
-               }
-        </script>
-    </head>
-
-
-    <body>
-        <div class="reveal">
-            <div class="slides">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+  </head>
 
 
-            </div>
-        </div>
+  <body>
+    <div class="reveal">
+      <div class="slides">
 
-        <script src="reveal.js/lib/js/head.min.js"></script>
-        <script src="reveal.js/js/reveal.js"></script>
-        <script src='http://127.0.0.1:9001/js/socket.js'></script>
-        <script>
-            // More info https://github.com/hakimel/reveal.js#configuration
-            Reveal.initialize({
-                controls: false,
-                progress: true,
-                history: true,
-                center: true,
-                slideNumber: true,
-                transition: 'convex', // none/fade/slide/convex/concave/zoom
-                // More info https://github.com/hakimel/reveal.js#dependencies
-                dependencies: [
-                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-                    { src: 'reveal.js/plugin/notes/notes.js', async: true },
-                    { src: 'reveal.js/plugin/math/math.js',async: true}
-                ]
-            });
-        </script>
-    </body>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    <script src='http://127.0.0.1:9001/js/socket.js'></script>
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+        transition: 'convex', // none/fade/slide/convex/concave/zoom
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js',async: true}
+        ]
+      });
+    </script>
+  </body>
 </html>
