@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Python Seminar Week 11</title>
+
+        <meta name="description" content="ATOC4500-Cartopy">
+        <meta name="author" content="Hong Chen">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+          if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'reveal.js/css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+          }
+        </script>
+
+    </head>
+
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+                <!--cartopy-->
+                <section>
+                    <section>
+                        <p style="font-size:300%;"><a href="http://scitools.org.uk/cartopy/">Cartopy</a></p>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### How to Use
+
+                            ```python
+                            # projection
+                            import cartopy.crs as ccrs
+
+                            # geographic maps
+                            from cartopy.io.img_tiles import OSM
+
+                            # tick labels
+                            from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### Example
+
+                            ```python
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### Example 2
+                            - Path manipulation
+                            <br>
+
+                            ```python
+                            import os
+
+                            if os.path.exists('/some/path/test.py'):
+                                # ... do something
+
+                            if not os.path.isdir('/some/path/test.py'):
+                                # ... do something
+
+                            if not os.path.isfile('/some/path/test.py'):
+                                # ... do something
+                            ```
+                        </script>
+                    </section>
+                </section>
+
+                <!-- sys -->
+                <section>
+                    <section>
+                        <p style="font-size:400%;"><a
+                            href="https://docs.python.org/3/library/sys.html">sys</a></p>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### How to Use
+
+                            ```python
+                            import sys
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### Example 1
+                            - Grab system information
+                            <br>
+
+                            ```python
+                            import sys
+
+                            print(sys.platform)  # 'win32', 'linux', 'cygwin', 'darwin'
+                            print(sys.byteorder) # 'little-endian', 'big-endian'
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### Example 2
+                            - Get arguments from command line
+                            <br>
+
+                            ```bash
+                            # the following is a shell command line (after >)
+                            >python test.py arg1 arg2 arg3
+                            ```
+                            <br>
+
+                            ```python
+                            import sys
+
+                            print(sys.argv[0]) # 'test.py'
+                            print(sys.argv[1]) # 'arg1'
+                            print(sys.argv[2]) # 'arg2'
+                            print(sys.argv[3]) # 'arg3'
+                            ```
+                        </script>
+                    </section>
+                </section>
+
+
+                <!-- glob -->
+                <section>
+                    <section>
+                        <p style="font-size:400%;"><a href="https://docs.python.org/3/library/glob.html">glob</a></p>
+                    </section>
+
+                    <section>
+                        <h3>How to Use</h3>
+                        <pre><code class="python">import glob</code></pre>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### Example
+                            - Grab the the pathnames matching given pattern
+                            <br>
+
+                            ```python
+                            import glob
+
+                            # return all pathnames
+                            fnames = glob.glob('/some/path/data/*')
+
+                            # return pathnames end with '.nc'
+                            fnames = glob.glob('/some/path/data/*.nc')
+
+                            # return pathnames has patterns of '2000-01-01' and '.nc'
+                            fnames = glob.glob('/some/path/data/*2000-01-01*.nc')
+
+                            # How about this one?
+                            fnames = glob.glob('/some/path/data/*2000-01-??*.nc')
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### Example _cont._
+                            - Do something with the returned pathnames
+                            <br>
+
+                            ```python
+                            import glob
+
+                            fnames = glob.glob('/some/path/data/*2000-01-01*.nc')
+
+                            # count how many pathnames
+                            NFile  = len(fnames)
+
+                            # read in the data one by one
+                            for fname in fnames:
+                                # ... do something
+                            ```
+                        </script>
+                    </section>
+                </section>
+
+                <!-- ftplib -->
+                <section>
+                    <section>
+                        <p style="font-size:400%;"><a href="https://docs.python.org/3/library/os.html">ftplib</a></p>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### How to Use
+
+                            ```python
+                            from ftplib import FTP
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### Example (MODIS)
+                            - Initiate ftp
+                            <br>
+
+                            ```python
+                            from ftplib import FTP
+
+                            # ftp initiate
+                            ftpSite  = 'ladsftp.nascom.nasa.gov'
+                            ftpMODIS = FTP(ftpSite)
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### Example _cont._
+                            - Anonymous login
+                            <br>
+
+                            ```python
+                            ftpMODIS.login()
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### Example _cont._
+                            - Go to directory
+                            <br>
+
+                            ```python
+                            # go to the data directory we interested in
+                            ftpMODIS.cwd('/allData/6/MOD06_L2/2008/001')
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### Example _cont._
+                            - Store listed file names
+                            <br>
+
+                            ```python
+                            # list and store data file names
+                            fnames = ftpMODIS.nlst()
+                            ```
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="reveal.js/text/template">
+                            ### Example _cont._
+                            - Download data and quit ftp
+                            <br>
+
+                            ```python
+                            for fname in fnames:
+                                ftpMODIS.retrbinary('RETR %s' % fname, \
+                                                    open(fname, 'wb').write)
+
+                            ftpMODIS.quit()
+                            ```
+                        </script>
+                    </section>
+                </section>
+
+                <!-- End -->
+                <section style="text-align: left;">
+                    <h1>THE END</h1>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: false,
+                progress: true,
+                history: true,
+                center: true,
+                slideNumber: true,
+
+                transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
