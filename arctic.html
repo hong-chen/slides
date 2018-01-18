@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>COMPS II - Chen, Hong</title>
+    <title>Arctic Talk - Chen, Hong</title>
 
-    <meta name="description" content="COMPSII">
+    <meta name="description" content="Presentation">
     <meta name="author" content="Hong Chen">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -29,7 +29,6 @@
     </script>
   </head>
 
-
   <body>
     <div class="reveal">
       <div class="slides">
@@ -41,78 +40,155 @@
           <p><span style="font-size:20px">Hong Chen</span></p>
         </section>
 
-        <!--<section>-->
-        <!--  <div class="fig-container"-->
-        <!--    data-file="my/reveal.js/plugin/reveal.js-d3/demo/d3-fig/eclipses.html"-->
-        <!--    ></div>-->
-        <!--</section>-->
-
-        <section>
+        <section data-transition="slide-in fade-out">
           <h3>Cloud Optical Parameters</h3>
-
           <section>
-            <p style="position:absolute; top:30%; z-index:100; font-size:64px; text-align:center; width:100%" class="fragment fade-out">
+            <p style="position:absolute; top:20%; z-index:100; font-size:64px; text-align:center; width:100%; color:SeaGreen">
                 What are they?
             </p>
-            <p class="fragment fade-up" style="font-size:36px">Cloud Optical Thickness ($\tau^*$)</p>
-            <p class="fragment fade-up" style="font-size:36px">Cloud Effective Radius ($R_e$)</p>
-            <p data-autoslide="600" class="fragment fade-up" style="font-size:36px">
-              <span class="fragment highlight-red">Cloud Thermodynamic Phase</span>
-            </p>
-            <br>
+          </section>
+        </section>
+
+        <section data-transition="fade-in slide-out">
+          <h3>Cloud Optical Parameters <span style="font-size:0.6em; color:SeaGreen">What are they?</span></h3>
+
+          <section>
+            <p style="font-size:36px">Cloud Optical Thickness ($\tau^*$)</p>
+            <p style="font-size:36px">Cloud Effective Radius ($r_e$)</p>
+            <p style="font-size:36px; color:Gray">Cloud Thermodynamic Phase</span></p>
             <br>
           </section>
 
           <section>
-            <p style="position:absolute; top:30%; z-index:100; font-size:64px; text-align:center; width:100%" class="fragment fade-out">
+            <img style="float:left"   width="450" data-src="data/comps/modis_cot_example.png"></img>
+            <img style="float:right"  width="450" data-src="data/comps/modis_cer_example.png"></img>
+
+          </section>
+
+        </section>
+
+        <section data-transition="slide-in fade-out">
+          <h3>Cloud Optical Parameters</h3>
+          <section>
+            <p style="position:absolute; top:20%; z-index:100; font-size:64px; text-align:center; width:100%; color:SeaGreen">
                 Why important?
             </p>
-            <img data-src="data/comps/modis_rtm.png" width="1000" class="fragment fade-in"></img>
-
           </section>
+        </section>
 
+        <section data-transition="fade-in slide-out">
+          <h3>Cloud Optical Parameters <span style="font-size:0.6em; color:SeaGreen">Why important?</span></h3>
           <section>
+            <img style="float:center"  width="1000" data-src="data/comps/cop_rtm_flux.png"></img>
+          </section>
+        </section>
 
-            <p style="position:absolute; top:30%; z-index:100; font-size:64px; text-align:center; width:100%" class="fragment fade-out">
+        <section data-transition="slide-in fade-out">
+          <h3>Cloud Optical Parameters</h3>
+          <section>
+            <p style="position:absolute; top:30%; z-index:100; font-size:64px; text-align:center; width:100%; color:SeaGreen">
                 Why need validation?
             </p>
-
-            <p class="fragment fade-up" style="font-size:36px">Insufficient knowledge about the snow/ice surface</p>
-            <p data-autoslide="300" class="fragment fade-up" style="font-size:36px">Common occurrence of thin clouds</p>
-            <p class="fragment fade-up" style="font-size:36px">...</p>
-            <br>
           </section>
         </section>
 
-        <section>
+        <section data-transition="fade-in slide-out">
+          <h3>Cloud Optical Parameters <span style="font-size:0.6em; color:SeaGreen">Why need validation?</span></h3>
+          <section>
+            <p style="font-size:36px">Lack of temperature and brightness contrast</p>
+            <p style="font-size:36px">Insufficient knowledge about the snow/ice surface</p>
+            <p style="font-size:36px">Common occurrence of thin clouds</p>
+            <p style="font-size:36px">...</p>
+            <br>
+          </section>
+
+        </section>
+
+        <section data-transition="slide-in fade-out">
           <h3>Aircraft Measurements</h3>
           <section>
-            <p style="position:absolute; top:30%; z-index:200; font-size:48px; text-align:center; width:100%" class="fragment fade-out">
-              <span style="color:Red">A</span>rctic <span style="color:Red">R</span>adiation-<span style="color:Red">I</span>ceBridge <span style="color:Red">S</span>ea & Ice <span style="color:Red">E</span>xperiment (<span style='color:Red'>ARISE</span>)
+            <p style="position:absolute; top:20%; z-index:200; font-size:48px; text-align:center; width:100%">
+              <span style="color:SeaGreen">A</span>rctic <span style="color:SeaGreen">R</span>adiation-<span style="color:SeaGreen">I</span>ceBridge <span style="color:SeaGreen">S</span>ea & Ice <span style="color:SeaGreen">E</span>xperiment (<span style='color:SeaGreen'>ARISE</span>)
             </p>
+          </section>
+        </section>
 
-            <img class="fragment fade-right" data-autoslide="300" style="float: left"  width="450" data-src="data/comps/map_trk_2014-09-04.png"></img>
-            <img class="fragment fade-left" style="float: right" width="450" data-src="data/comps/map_trk_2014-09-19.png"></img>
-
-            <!--<video class="fragment fade-up" style="width=50%" data-src="/Users/hoch4240/Chen/mygit/slides/data/comps/sample-video.mp4"></video>-->
+        <section data-transition="fade-in slide-out">
+          <h3>Aircraft Measurements <span style="font-size:0.6em; color:SeaGreen">ARISE</span></h3>
+          <section>
+            <br>
+            <img style="float:left"  width="450" data-src="data/comps/globe-trk_2014-09-07.png"></img>
+            <br>
+            <img style="float:right" width="450" data-src="data/comps/map-trk_2014-09-07.png"></img>
           </section>
 
           <section>
-            <p style="position:absolute; top:0%; z-index:200; font-size:48px; width:100%" class="fragment fade-out">
-              <span style="color:Red">S</span>olar <span style="color:Red">S</span>pectral <span style="color:Red">F</span>lux <span style="color:Red">R</span>adiometer (<span style='color:Red'>SSFR</span>)
-            </p>
             <br>
-            <p style="position:absolute; top:60%; z-index:200; font-size:48px; width:100%" class="fragment fade-out">
-              <span style="color:Red">B</span>road<span style="color:Red">B</span>and <span style="color:Red">R</span>adiometer (<span style='color:Red'>BBR</span>)
-            </p>
+            <img style="float:left"  width="450" data-src="data/comps/globe-trk_2014-09-09.png"></img>
+            <br>
+            <img style="float:right" width="450" data-src="data/comps/map-trk_2014-09-09.png"></img>
           </section>
 
+          <section>
+            <br>
+            <img style="float:left"  width="450" data-src="data/comps/globe-trk_2014-09-11.png"></img>
+            <br>
+            <img style="float:right" width="450" data-src="data/comps/map-trk_2014-09-11.png"></img>
+          </section>
+
+          <section>
+            <br>
+            <img style="float:left"  width="450" data-src="data/comps/globe-trk_2014-09-13.png"></img>
+            <br>
+            <img style="float:right" width="450" data-src="data/comps/map-trk_2014-09-13.png"></img>
+          </section>
+
+          <section>
+            <br>
+            <img style="float:left"  width="450" data-src="data/comps/globe-trk_2014-09-16.png"></img>
+            <br>
+            <img style="float:right" width="450" data-src="data/comps/map-trk_2014-09-16.png"></img>
+          </section>
+
+          <section>
+            <br>
+            <img style="float:left"  width="450" data-src="data/comps/globe-trk_2014-09-17.png"></img>
+            <br>
+            <img style="float:right" width="450" data-src="data/comps/map-trk_2014-09-17.png"></img>
+          </section>
         </section>
 
+        <section data-transition="slide-in fade-out">
+          <h3>Aircraft Measurements</h3>
+          <section>
+            <p style="position:absolute; top:20%; z-index:200; font-size:48px; text-align:center; width:100%">
+              <span style="color:SeaGreen">S</span>olar <span style="color:SeaGreen">S</span>pectral <span style="color:SeaGreen">F</span>lux <span style="color:SeaGreen">R</span>adiometer (<span style='color:SeaGreen'>SSFR</span>)
+            </p>
+          </section>
+        </section>
 
-        <!--<section>-->
-        <!--  <h3 style="font-size:28px"><span style="color:deepskyblue">O</span>bse<span style="color:deepskyblue">R</span>vations of <span style="color:deepskyblue">A</span>erosols above <span style="color:deepskyblue">CL</span>ouds and their int<span style="color:deepskyblue">E</span>raction<span style="color:deepskyblue">S</span> (<span style='color:deepskyblue'>ORACLES</span>)</h3>-->
-        <!--</section>-->
+        <section data-transition="fade-in slide-out">
+          <h3>Aircraft Measurements <span style="font-size:0.6em; color:SeaGreen">SSFR</span></h3>
+          <section>
+            <p>hahaha</p>
+          </section>
+        </section>
+
+        <section data-transition="slide-in fade-out">
+          <h3>Aircraft Measurements</h3>
+          <section>
+            <p style="position:absolute; top:20%; z-index:200; font-size:48px; text-align:center; width:100%">
+              <span style="color:SeaGreen">B</span>road<span style="color:SeaGreen">B</span>and <span style="color:SeaGreen">R</span>adiometer (<span style='color:SeaGreen'>BBR</span>)
+            </p>
+          </section>
+        </section>
+
+        <section data-transition="fade-in slide-out">
+          <h3>Aircraft Measurements <span style="font-size:0.6em; color:SeaGreen">BBR</span></h3>
+          <section>
+            <p>hahaha</p>
+          </section>
+        </section>
 
         <section>
           <h2>Thanks!</h2>
