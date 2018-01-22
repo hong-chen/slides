@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>ATOC-5235</title>
+
+    <meta name="description" content="ATOC-5235">
+    <meta name="author" content="Hong Chen">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
+    <link rel="stylesheet" href="my/reveal.js/css/theme/science.css" id="theme">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+  </head>
+
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section data-markdown>
+          <script type="reveal.js/text/template">
+            ### Python Intro
+            <br>
+
+            - Skywatch & SPN1
+
+            - Python List <br>
+
+            - Python Indexing <br>
+
+            - `numpy` <br>
+
+            - `matplotlib`<br>
+
+          </script>
+        </section>
+
+        <section>
+          <h3>Skywatch</h3>
+          <br>
+          <img data-src="data/class/skywatch.jpg"></img>
+          <p style="font-size:100%;"><a href="http://skywatch.colorado.edu/">skywatch.colorado.edu</a></p>
+        </section>
+
+        <section>
+          <h3>Total & Diffuse Pyranometer (SPN1)</h3>
+          <br>
+          <img height="300" data-src="data/class/spn1.png"></img>
+          <p style="font-size:80%;">Measures total and diffuse components of incident solar radiation (broadband flux from 400nm to 2700nm)</p>
+        </section>
+
+        <section>
+          <h3>How to Download the Data?</h3>
+          <section data-markdown>
+            <script type="reveal.js/text/template">
+              <br>
+              - Go to [__skywatch.colorado.edu__](http://skywatch.colorado.edu/)
+
+              - Click __Archives__ at the left panel
+
+              - In Instrument, pick __Total/Diffuse Pyranometer__
+
+              - Pick a date, e.g., Year __2017__, Month __August__, day __21__
+
+              - Click __submit__
+
+              - Scroll down until __file__ shows up, right click on __file__ and __Save Link As...__
+            </script>
+          </section>
+
+          <section>
+            <a href="http://skywatch.colorado.edu/" data-preview-link>Click Me for In-Class Demo</a>
+          </section>
+        </section>
+
+        <section>
+          <h3>Explore the Data</h3>
+          <section data-markdown>
+            ```markdown
+            ;Sunshine Pyranometer SPN1
+            ;Skywatch ground facility
+            ;Department of Atmospheric and Oceanic Sciences
+            ;University of Colorado at Boulder
+            ;start time = 2017-08-21 05:30:00 (local mountain time)
+            ;Time(UTC), Total Irradiance(W/m^2), Diffuse Irradiance(W/m^2), Sunshine (True or False)
+            11:30:05,    2.6,     1.4, 0
+            11:30:10,    2.7,     1.4, 0
+            11:30:15,    2.7,     1.5, 0
+            11:30:20,    2.6,     1.4, 0
+            11:30:25,    2.1,     1.4, 0
+            11:30:31,    1.9,     0.0, 0
+            11:30:36,    2.7,     1.4, 0
+            11:30:41,    2.7,     1.4, 0
+            11:30:46,    2.6,     1.4, 0
+            11:30:51,    1.3,     0.0, 0
+            11:30:56,    2.7,     1.4, 0
+            11:31:01,    2.7,     1.4, 0
+            11:31:06,    1.3,     0.0, 0
+            11:31:11,    2.0,     1.4, 0
+              ```
+          </section>
+
+          <section data-markdown>
+            #### Header
+            ```markdown
+            ;Sunshine Pyranometer SPN1
+            ;Skywatch ground facility
+            ;Department of Atmospheric and Oceanic Sciences
+            ;University of Colorado at Boulder
+            ;start time = 2017-08-21 05:30:00 (local mountain time)
+            ;Time(UTC), Total Irradiance(W/m^2), Diffuse Irradiance(W/m^2), Sunshine (True or False)
+            ```
+          </section>
+
+          <section data-markdown>
+            #### Body
+            ```markdown
+              11:30:05,    2.6,     1.4, 0
+            ```
+          </section>
+
+        </section>
+
+        <!-- End -->
+        <section style="text-align: left;">
+            <h1>THE END</h1>
+        </section>
+
+        <section>
+          <h3>Extra</h3>
+          <section data-markdown>
+            #### Install `pysolar`
+            ```bash
+            conda install -c conda-forge pysolar
+            ```
+          </section>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+
+    <script>
+
+        // More info https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: false,
+            progress: true,
+            history: true,
+            center: true,
+            slideNumber: true,
+
+            transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+            // More info https://github.com/hakimel/reveal.js#dependencies
+            dependencies: [
+                { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                { src: 'reveal.js/plugin/notes/notes.js', async: true }
+            ]
+        });
+
+    </script>
+
+  </body>
+</html>
