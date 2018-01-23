@@ -206,7 +206,7 @@
               # now a = ["haha", "10", 10, 10.0, None, 10+10j, "haha"]
 
               len(a)
-              # return the number of elements in the list, here 6
+              # return the number of elements in the list, here 7
               ```
           </section>
         </section>
@@ -310,7 +310,7 @@
 
           <section>
             <h4>Part I: Read in Data</h4>
-            <pre><code class="python hljs" data-trim contenteditable>
+            <pre><code class="python hljs" data-trim contenteditable data-noescape>
 # file name, relative path
 fname = 'spn_17_08_21.dat' # needs to be downloaded from Skywatch first
                            # Note: there is alternate (more complicated) code
@@ -356,7 +356,7 @@ for line in lines:
 
           <section>
             <h4>Part II: Analyze</h4>
-            <pre><code class="python hljs" data-trim contenteditable>
+            <pre><code class="python hljs" data-trim contenteditable data-noescape>
 # need this for "where" statement that works only on arrays
 import numpy as np
 time = np.array(time)
@@ -367,7 +367,7 @@ time[next_day]=time[next_day]+24.
 
           <section>
             <h4>Part III: Plot</h4>
-            <pre><code class="python hljs" data-trim contenteditable>
+            <pre><code class="python hljs" data-trim contenteditable data-noescape>
 # Now do the plotting
 import matplotlib.pyplot as plt
 fig=plt.figure(figsize=(6,6))
@@ -563,7 +563,7 @@ plt.plot(dtime, total    , marker='o', markersize=1, label='Total (SPN1)')
 plt.plot(dtime, diffuse  , marker='o', markersize=1, label='Diffuse (SPN1)')
 <mark>plt.plot(dtime, total_toa, marker='o', markersize=1, label='Total (TOA)')</mark>
 plt.ylim(bottom=0)
-plt.xlabel('UTC [hour]')
+plt.xlabel('Date/Time')
 plt.ylabel('Irradiance [$\mathrm{W m^{-2} nm^{-1}}$]')
 plt.title('Solar Eclipse')
 plt.legend()
