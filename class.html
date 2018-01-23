@@ -38,22 +38,19 @@
     <div class="reveal">
       <div class="slides">
 
-        <section data-markdown>
-          <script type="reveal.js/text/template">
-            ### Python Intro
-            <br>
+        <section>
+        <h3>ATOC 5235 - Week 2 - 2018/01/23</h3>
+          <section data-markdown>
+            <script type="reveal.js/text/template">
+              - Skywatch & SPN1 Intro
 
-            - Skywatch & SPN1
+              - Download SPN1 Data
 
-            - Python List <br>
+              - Read SPN1 Data
 
-            - Python Indexing <br>
-
-            - `numpy` <br>
-
-            - `matplotlib`<br>
-
-          </script>
+              - Analyze and Plot
+            </script>
+          </section>
         </section>
 
         <section>
@@ -67,11 +64,11 @@
           <h3>Total & Diffuse Pyranometer (SPN1)</h3>
           <br>
           <img height="300" data-src="data/class/spn1.png"></img>
-          <p style="font-size:80%;">Measures total and diffuse components of incident solar radiation (broadband flux from 400nm to 2700nm)</p>
+          <p style="font-size:80%;">Measures total and diffuse components of incident solar radiation</p>
         </section>
 
         <section>
-          <h3>How to Download the Data?</h3>
+          <h3>How to Download SPN1 Data?</h3>
           <section data-markdown>
             <script type="reveal.js/text/template">
               <br>
@@ -95,7 +92,7 @@
         </section>
 
         <section>
-          <h3>Explore the Data</h3>
+          <h3>Explore the Data <span style="font-size:60%; color:SeaGreen">spn_17_08_21.dat</span></h3>
           <section data-markdown>
             ```markdown
             ;Sunshine Pyranometer SPN1
@@ -136,10 +133,40 @@
           <section data-markdown>
             #### Body
             ```markdown
-              11:30:05,    2.6,     1.4, 0
+            11:30:05,    2.6,     1.4, 0
+            11:30:05,    2.6,     1.4, 0
+            11:30:10,    2.7,     1.4, 0
+            11:30:15,    2.7,     1.5, 0
+            11:30:20,    2.6,     1.4, 0
+            11:30:25,    2.1,     1.4, 0
+            11:30:31,    1.9,     0.0, 0
+            11:30:36,    2.7,     1.4, 0
+            11:30:41,    2.7,     1.4, 0
+            11:30:46,    2.6,     1.4, 0
+            11:30:51,    1.3,     0.0, 0
             ```
+            Comma-Separated Values (CSV)
           </section>
+        </section>
 
+        <section>
+          <h3>Read the Data using Python <span style="font-size:60%; color:SeaGreen">eclipse_v1.py</span></h3>
+          <section data-markdown>
+            <script type="reveal.js/text/template">
+              #### Functions that are used (click on for details):
+              <br>
+
+              [`open`](https://docs.python.org/3/library/functions.html#open),
+              [`len`](https://docs.python.org/3/library/functions.html#len),
+              [`print`](https://docs.python.org/3/library/functions.html#print)
+
+              <br>
+
+              [Input/Output](https://docs.python.org/3/tutorial/inputoutput.html),
+              [List](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists),
+              [String](https://docs.python.org/3/library/string.html)
+            </script>
+          </section>
         </section>
 
         <!-- End -->
