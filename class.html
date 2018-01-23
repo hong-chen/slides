@@ -149,6 +149,151 @@
         </section>
 
         <section>
+          <h3>Python Intro <span style="font-size:60%; color:SeaGreen">List</span></h3>
+
+          <section data-markdown>
+              #### Defined by `[]`
+
+              ```python
+              a = ["10", 10, 10.0, None, 10+10j]
+
+              b = [print, type, float]
+
+              c = [a, b]
+              ```
+          </section>
+
+          <section data-markdown>
+              #### Indexing
+
+              ```python
+              # index  0/-5    1/-4   2/-3   3/-2    4/-1
+              a    = [ "10",    10,   10.0,  None,  10+10j]
+
+              # a[0] or a[-5] is "10"
+              # a[1] or a[-4] is 10
+              # a[2] or a[-3] is 10.0
+              # a[3] or a[-2] is None
+              # a[4] or a[-1] is 10+10j
+              ```
+          </section>
+
+          <section data-markdown>
+              #### Slicing
+              ```python
+              # index    0      1       2      3       4
+              a    = [ "10",    10,   10.0,  None,  10+10j]
+
+              # a[0:1] is "10"
+              # a[0:2] are "10", 10
+              # a[0:3] are "10", 10, 10.0
+              # a[3:] are None, 10+10j
+              ```
+              What about the following?
+
+              ```python
+              a[::-1] = ?
+              a[::2]  = ?
+              ```
+          </section>
+
+          <section data-markdown>
+              #### Functions
+
+              ```python
+              a = ["10", 10, 10.0, None, 10+10j]
+
+              a.append("haha")
+              # now a = ["10", 10, 10.0, None, 10+10j, "haha"]
+
+              a.insert(0, "haha")
+              # now a = ["haha", "10", 10, 10.0, None, 10+10j, "haha"]
+
+              len(a)
+              # return the number of elements in the list, here 6
+              ```
+          </section>
+        </section>
+
+        <section>
+          <h3>Python Intro <span style="font-size:60%; color:SeaGreen">String</span></h3>
+
+          <section data-markdown>
+              #### Defined by `''` or `""`
+
+              ```python
+              a = "Hello my name is Hong Chen"
+
+              name = "Hong Chen"
+              b = "Hello my name is {0:s}".format(name)
+
+              c = "Hello my name is %s" % name
+              ```
+          </section>
+
+          <section data-markdown>
+              #### Indexing
+
+              ```python
+              a = "Hello my name is Hong Chen"
+
+              # a[0] is 'H'
+              # a[1] is 'e'
+              # a[2] is 'l'
+              # ...
+              # a[-1] is 'n'
+              ```
+          </section>
+
+          <section data-markdown>
+              #### Slicing
+              ```python
+              a = "Hello my name is Hong Chen"
+
+              # a[0:5] is "Hello"
+              # a[0:6] is "Hello "
+              # a[6:8] is "my"
+              # a[17:] is "Hong Chen"
+              ```
+              What about the following?
+
+              ```python
+              a[::-1] = ?
+              a[::2]  = ?
+              ```
+          </section>
+
+          <section data-markdown>
+              #### Functions
+
+              ```python
+              a = "Hello my name is Hong Chen"
+
+              len(a)
+              # returns the length of the string, here 26
+
+              a.split(" ")
+              # returns the list ['Hello', 'my', 'name', 'is', 'Hong', 'Chen']
+
+              a.lower()
+              # returns "hello my name is hong chen"
+
+              a.upper()
+              # returns "HELLO MY NAME IS HONG CHEN"
+
+              a.replace("Hong Chen", "Sebastian Schmidt")
+              # returns "Hello my name is Sebastian Schmidt"
+
+              "     haha     ".strip()
+              # removes white spaces, returns "haha"
+
+              "10".zfill(10)
+              # fills zeros at the beginning, returns "0000000010"
+              ```
+          </section>
+        </section>
+
+        <section>
           <h3>Read the Data using Python <span style="font-size:60%; color:SeaGreen">eclipse_v1.py</span></h3>
           <section data-markdown>
             <script type="reveal.js/text/template">
@@ -166,7 +311,159 @@
               [String](https://docs.python.org/3/library/string.html)
             </script>
           </section>
+
+          <section>
+            <h4>Part I: Read in data</h4>
+            <pre><code class="python hljs" data-trim contenteditable>
+# file name, relative path
+fname = 'spn_17_08_21.dat' # needs to be downloaded from Skywatch first
+                           # Note: there is alternate (more complicated) code
+                           # where the data is directly downloaded from the web
+
+# open text file to read
+f = open(fname,'r')
+
+# read all lines into list of strings "lines"
+lines = f.readlines() # () tells python it's a function not an attribute --> execute
+
+f.close()
+
+nLine = len(lines)
+print("There are {0:d} lines in file \"{1:s}\".".format(nLine, fname))
+
+# Loop over the lines in the file and read out content.
+time   = [] # initialize list for times
+total  = [] # initialize list for total irradiance
+for line in lines:
+
+    # ";" is used as a comment in the data file; ignore!
+    if line[0] != ";":
+
+        entries = line.split(",") # Split one line (string) into sub-strings using "," as separator.
+
+        time0  = entries[0]
+
+        hour   = time0[0:2]
+        minute = time0[3:5]
+        second = time0[6:8]
+        # Or use the following
+        # hour, minute, second = time0.split(":")
+        time0  = float(hour) + float(minute)/60.0 + float(second)/3600.0
+
+        total0 = entries[1]
+        total0 = float(total0)
+
+        time.append(time0)
+        total.append(total0)
+            </code></pre>
+          </section>
+
+          <section>
+            <h4>Part II: Analyze</h4>
+            <pre><code class="python hljs" data-trim contenteditable>
+# need this for "where" statement that works only on arrays
+import numpy as np
+time = np.array(time)
+next_day=np.where(time < 7) # This is not quite clean, cut off at locat midnight
+time[next_day]=time[next_day]+24.
+            </code></pre>
+          </section>
+
+          <section>
+            <h4>Part III: Plot</h4>
+            <pre><code class="python hljs" data-trim contenteditable>
+# Now do the plotting
+import matplotlib.pyplot as plt
+fig=plt.figure(figsize=(6,6))
+plt.plot(time, total, marker='o', markersize=1)
+plt.xlabel('UTC [hour]')
+plt.ylabel('Irradiance [$\mathrm{W m^{-2} nm^{-1}}$]')
+plt.title('Solar Eclipse')
+plt.show()
+            </code></pre>
+          </section>
         </section>
+
+        <section>
+          <h3>Read the Data using Python <span style="font-size:60%; color:SeaGreen">eclipse_v2.py</span></h3>
+          <section>
+            <h4>Read in diffuse</h4>
+            <pre><code class="python hljs" data-trim contenteditable>
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Read in Skywatch eclipse data (skywatch.colorado.edu) and make simple plot.
+Here, diffuse irradiance is also read in (student task)
+"""
+
+# file name, relative path
+fname = 'spn_17_08_21.dat' # needs to be downloaded from Skywatch first
+                           # Note: there is alternate (more complicated) code
+                           # where the data is directly downloaded from the web
+
+# open text file to read
+f = open(fname,'r')
+
+# read all lines into list of strings "lines"
+lines = f.readlines() # () tells python it's a function not an attribute --> execute
+
+f.close()
+
+nLine = len(lines)
+print("There are {0:d} lines in file \"{1:s}\".".format(nLine, fname))
+
+# Loop over the lines in the file and read out content.
+time    = [] # initialize list for times
+total   = [] # initialize list for total irradiance
+#*********** # initialize list for diffuse irradiance
+for line in lines:
+
+    # ";" is used as a comment in the data file; ignore!
+    if line[0] != ";":
+
+        entries = line.split(",") # Split one line (string) into sub-strings using "," as separator.
+
+        time0  = entries[0]
+
+        hour   = time0[0:2]
+        minute = time0[3:5]
+        second = time0[6:8]
+        # Or use the following
+        # hour, minute, second = time0.split(":")
+        time0    = float(hour) + float(minute)/60.0 + float(second)/3600.0
+
+        total0   = entries[1]
+        total0   = float(total0)
+
+        #********************
+        #********************
+
+        time.append(time0)
+        total.append(total0)
+        #********************
+
+# need this for "where" statement that works only on arrays
+import numpy as np
+time = np.array(time)
+next_day=np.where(time < 7) # This is not quite clean, cut off at locat midnight
+time[next_day]=time[next_day]+24.
+
+# Now do the plotting
+import matplotlib.pyplot as plt
+fig=plt.figure(figsize=(6,6))
+plt.plot(time, total  , marker='o', markersize=1, label='Global')
+#****************************************************************
+plt.xlabel('UTC [hour]')
+plt.ylabel('Irradiance [$\mathrm{W m^{-2} nm^{-1}}$]')
+plt.title('Solar Eclipse')
+plt.legend()
+plt.show()
+            </code></pre>
+          </section>
+        </section>
+
+
 
         <!-- End -->
         <section style="text-align: left;">
