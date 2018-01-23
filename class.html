@@ -22,13 +22,11 @@
 
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
-      if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-      }
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
   </head>
 
@@ -38,17 +36,15 @@
       <div class="slides">
 
         <section>
-        <h3>ATOC 5235 - Week 2 - 2018/01/23</h3>
+          <h3>ATOC 5235 - Week 2 - 2018/01/23</h3>
           <section data-markdown>
-            <script type="reveal.js/text/template">
-              - Skywatch & SPN1 Intro
+            - Skywatch & SPN1 Intro</p>
 
-              - Download SPN1 Data
+            - Download SPN1 Data</p>
 
-              - Read SPN1 Data
+            - Read SPN1 Data</p>
 
-              - Analyze and Plot
-            </script>
+            - Analyze and Plot</p>
           </section>
         </section>
 
@@ -69,7 +65,7 @@
         <section>
           <h3>How to Download SPN1 Data?</h3>
           <section data-markdown>
-            <script type="reveal.js/text/template">
+            <script type="text/template">
               <br>
               - Go to [__skywatch.colorado.edu__](http://skywatch.colorado.edu/)
 
@@ -114,7 +110,7 @@
             11:31:01,    2.7,     1.4, 0
             11:31:06,    1.3,     0.0, 0
             11:31:11,    2.0,     1.4, 0
-              ```
+            ```
           </section>
 
           <section data-markdown>
@@ -296,7 +292,7 @@
         <section>
           <h3>Read the Data using Python <span style="font-size:60%; color:SeaGreen">eclipse_v1.py</span></h3>
           <section data-markdown>
-            <script type="reveal.js/text/template">
+            <script type="text/template">
               #### Functions that are used:
               <br>
 
