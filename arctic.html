@@ -19,13 +19,11 @@
 
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
-      if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-      }
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
   </head>
 
@@ -36,8 +34,9 @@
         <section>
           <h4>Validation of Cloud Optical Parameters from Passive Remote Sensing in the Arctic by using the Aircraft Measurements</h4>
           <br>
-          <p><span style="font-size:20px; color:gray">by</span></p>
-          <p><span style="font-size:20px">Hong Chen</span></p>
+          <p style="line-height:70%"><span style="font-size:18px; color:Black"><a href="http://me.hongchen.cz/">Hong Chen</a>, <a href="http://lasp.colorado.edu/home/personnel/sebastian.schmidt/">Sebastian Schmidt</a>, <a href="http://lasp.colorado.edu/home/personnel/odele.coddington/">Odele Coddington</a>, <a href="https://science.gsfc.nasa.gov/sed/bio/gala.wind">Gala Wind</a>,<br> <a href="https://airbornescience.nasa.gov/person/Anthony_Bucholtz">Anthony Bucholtz</a>, <a href="https://airbornescience.nasa.gov/person/Michal_Segal_Rozenhaimer">Michal Segal Rozenhaimer</a>, <a href="https://airbornescience.nasa.gov/person/Samuel_LeBlanc">Samuel LeBlanc</a></span></p>
+          <p><span style="font-size:16px; color:Gray">Presented by</span></p>
+          <p><span style="font-size:22px">Hong Chen</span></p>
         </section>
 
         <section data-transition="slide-in fade-out">
@@ -279,6 +278,38 @@
 
         <section data-transition="fade-in slide-out">
           <h3>Validation <span style="font-size:0.6em; color:SeaGreen">MODIS</span></h3>
+          <section>
+          </section>
+        </section>
+
+        <section data-transition="slide-in fade-out">
+          <h3>Results</h3>
+          <section>
+            <p style="font-size:48px; text-align:center; width:100%">
+              <span style="color:SeaGreen">2014-09-11</span> (<span style="color:SeaGreen">Above Clouds</span>)
+            </p>
+            <video loop data-autoplay src="data/comps/sample-video_cal-cir.mp4"></video>
+          </section>
+        </section>
+
+        <section data-transition="fade-in slide-out">
+          <h3>Results <span style="font-size:0.6em; color:SeaGreen">Above Clouds</span></h3>
+          <section>
+          </section>
+        </section>
+
+        <section data-transition="slide-in fade-out">
+          <h3>Preliminary Results</h3>
+          <section>
+            <p style="font-size:48px; text-align:center; width:100%">
+              <span style="color:SeaGreen">2014-09-13</span> (<span style="color:SeaGreen">Below Clouds</span>)
+            </p>
+            <video loop data-autoplay src="data/comps/sample-video_cal-cir.mp4"></video>
+          </section>
+        </section>
+
+        <section data-transition="fade-in slide-out">
+          <h3>Preliminary Results <span style="font-size:0.6em; color:SeaGreen">Below Clouds</span></h3>
           <section>
           </section>
         </section>
