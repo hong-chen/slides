@@ -165,17 +165,39 @@
         </section>
 
         <section data-transition="slide-in fade-out">
-          <h3>Results</h3>
+          <h3>Results <span style="font-size:0.6em; color:SeaGreen">Spectral Albedo</span></h3>
+          <section>
+            <img src="data/comps/snow-frac_100.png" width=100%></img>
+          </section>
+          <section>
+              <img src="data/comps/snow-frac_80.png" width=100%></img>
+          </section>
+          <section>
+              <img src="data/comps/snow-frac_70.png" width=100%></img>
+          </section>
+          <section>
+              <img src="data/comps/snow-frac_40.png" width=100%></img>
+          </section>
+
+          <section>
+            <br>
+            <br>
+            <p><span style="font-size:32px; color:Black; font-weight:normal">SSFR Derived Snow/Ice Surface Albedo</p>
+            <iframe data-src="http://me.hongchen.cz/slides/albedo.html" width=100% height=450, style="float:center"></iframe>
+          </section>
+
+        </section>
+
+        <section data-transition="fade-in slide-out">
+          <h3>Results <span style="font-size:0.6em; color:SeaGreen">Above Clouds</span></h3>
+
           <section>
             <p style="font-size:48px; text-align:center; width:100%">
               <span style="color:SeaGreen">2014-09-11</span> (<span style="color:SeaGreen">Above Clouds</span>)
             </p>
             <video loop data-autoplay src="data/comps/sample-video_20140911.mp4"></video>
           </section>
-        </section>
 
-        <section data-transition="fade-in slide-out">
-          <h3>Results <span style="font-size:0.6em; color:SeaGreen">Above Clouds</span></h3>
           <section>
             <br>
             <p style="font-size:48px; color:SeaGreen">Broadband Flux Comparison</p>
@@ -227,7 +249,7 @@
     <script>
       // More info https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
-        controls: false,
+        controls: true,
         progress: true,
         history: true,
         center: true,
