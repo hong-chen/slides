@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>ELS Talk - Chen, Hong</title>
+
+    <meta name="description" content="Presentation">
+    <meta name="author" content="Hong Chen">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="my/reveal.js/css/theme/science.css" id="theme">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h4>Validation of Cloud Optical Parameters from Passive Remote Sensing in the Arctic by using the Aircraft Measurements</h4>
+          <br>
+          <p style="line-height:70%"><span style="font-size:18px; color:Black"><a href="http://me.hongchen.cz/" target="_blank">Hong Chen</a>, <a href="http://lasp.colorado.edu/home/personnel/sebastian.schmidt/" target="_blank">Sebastian Schmidt</a>, <a href="http://lasp.colorado.edu/home/personnel/odele.coddington/" target="_blank">Odele Coddington</a>, <a href="https://science.gsfc.nasa.gov/sed/bio/gala.wind" target="_blank">Gala Wind</a>,<br> <a href="https://airbornescience.nasa.gov/person/Anthony_Bucholtz" target="_blank">Anthony Bucholtz</a>, <a href="https://airbornescience.nasa.gov/person/Michal_Segal_Rozenhaimer" target="_blank">Michal Segal Rozenhaimer</a>, <a href="https://airbornescience.nasa.gov/person/Samuel_LeBlanc" target="_blank">Samuel LeBlanc</a></span></p>
+          <p><span style="font-size:16px; color:Gray">Presented by</span></p>
+          <p><span style="font-size:22px">Hong Chen</span></p>
+        </section>
+
+        <section>
+          <h3>Motivation <span style="color:SeaGreen; font-size:0.6em">Low-Level Thin Clouds</span></h3>
+          <section>
+            <br>
+            <div style="text-align:center; float:left">
+              <video loop data-autoplay src="data/comps/low-clouds_20140907.mp4" width=450></video>
+            </div>
+            <div style="text-align:center; float:right">
+              <video loop data-autoplay src="data/comps/low-clouds_20140909.mp4" width=450></video>
+            </div>
+            <div style="text-align:center; float:left">
+              <video loop data-autoplay src="data/comps/low-clouds_20140913.mp4" width=450></video>
+            </div>
+            <div style="text-align:center; float:right">
+              <video loop data-autoplay src="data/comps/low-clouds_20140919.mp4" width=450></video>
+            </div>
+          </section>
+
+          <section>
+            <div style="text-align:right; float:left">
+              <p style="color:Black; font-size:24px; font-weight:bold">Bennartz et. al., 2012</p>
+              <img height="250" data-src="data/comps/lwp_switch.png"></img>
+            </div>
+            <div style="text-align:center; float:right">
+              <br>
+              <p style="color:SeaGreen; font-size:36px">Clouds v.s. Surface</p>
+              <p style="font-size:26px">Lack of temperature contrast at longwave</p>
+              <p style="font-size:26px">Lack of brightness contrast at shortwave</p>
+              <p style="font-size:26px">Insufficient knowledge about the surface</p>
+              <p style="font-size:26px">...</p>
+            </div>
+          </section>
+
+          <section>
+            <p style="color:Black; font-size:36px; text-align:left">1. Can MODIS detect the low-level thin clouds?</p>
+            <br>
+            <p style="color:Black; font-size:36px; text-align:left">2. Are the MODIS cloud retrievals for low-level thin clouds reliable?</p>
+          </section>
+        </section>
+
+
+        <section>
+          <h3>Aircraft Measurements <span style="font-size:0.6em; color:SeaGreen">ARISE</span></h3>
+
+          <section>
+            <br>
+            <p><span style="font-size:36px; color:Black; font-weight:bold">Arctic Radiation-IceBridge Sea & Ice Experiment</p>
+            <img height="350" data-src="data/comps/arise_satellite_aircraft.png"></img>
+          </section>
+
+          <section>
+            <br>
+            <br>
+            <div>
+              <img style="float:left"    width="22%" data-src="data/comps/globe-trk_2014-09-07.png"></img>
+              <img style="float:center"  width="22%" data-src="data/comps/globe-trk_2014-09-09.png"></img>
+              <img style="float:right"   width="22%" data-src="data/comps/globe-trk_2014-09-11.png"></img>
+            </div>
+
+            <div>
+              <img style="float:left"    width="22%" data-src="data/comps/globe-trk_2014-09-13.png"></img>
+              <img style="float:center"  width="22%" data-src="data/comps/globe-trk_2014-09-16.png"></img>
+              <img style="float:right"   width="22%" data-src="data/comps/globe-trk_2014-09-17.png"></img>
+            </div>
+          </section>
+
+          <section>
+            <br>
+            <br>
+            <div>
+              <img style="float:left"    width="26%" data-src="data/comps/map-trk_2014-09-07.png"></img>
+              <img style="float:center"  width="26%" data-src="data/comps/map-trk_2014-09-09.png"></img>
+              <img style="float:right"   width="26%" data-src="data/comps/map-trk_2014-09-11.png"></img>
+            </div>
+            <div>
+              <img style="float:left"    width="26%" data-src="data/comps/map-trk_2014-09-13.png"></img>
+              <img style="float:center"  width="26%" data-src="data/comps/map-trk_2014-09-16.png"></img>
+              <img style="float:right"   width="26%" data-src="data/comps/map-trk_2014-09-17.png"></img>
+            </div>
+          </section>
+        </section>
+
+        <section data-background-image="data/comps/c130.png">
+        </section>
+
+        <section>
+          <h3>Aircraft Measurements <span style="font-size:0.6em; color:SeaGreen">SSFR + BBR</span></h3>
+
+          <section>
+            <p style="color:SeaGreen; font-size:48px">Solar Spectra Flux Radiometer (SSFR)</p>
+            <img style="float:left"   height="350" data-src="data/comps/ssfr_nadir.png"></img>
+            <img style="float:right"  height="350" data-src="data/comps/ssfr_zenith.png"></img>
+          </section>
+
+          <section>
+            <br>
+            <div style="text-align:right; float:left">
+              <p style="color:SeaGreen; font-size:48px"><span style="font-size:36px; color:Black">($\mathrm{W m^{-2} nm^{-1}}$)</span> SSFR</p>
+              <img data-src="data/comps/ssfr_f_example.png" height="200"></img>
+              <p style="color:Black; font-size:30px">Spectral context</p>
+              <p style="color:Red; font-size:30px">SZA-dependent azimuth response</p>
+              <p style="color:Red; font-size:30px">Spectral cosine response</p>
+            </div>
+
+            <div style="text-align:left; float:right">
+              <p style="color:SeaGreen; font-size:48px">BBR <span style="font-size:36px; color:Black">($\mathrm{W m^{-2}}$)</span></p>
+              <img data-src="data/comps/bbr_f_example.png" height="200"></img>
+              <p style="color:Black; font-size:30px">Consistent azimuth response</p>
+              <p style="color:Black; font-size:30px">Stable cosine response</p>
+              <p style="color:Red; font-size:30px">No spectral context</p>
+            </div>
+            <br>
+          </section>
+        </section>
+
+        <section>
+          <h3>Cloud Optical Parameters <span style="font-size:0.6em; color:SeaGreen">MODIS "1621"</span></h3>
+
+          <section>
+            <br>
+            <img style="float:left"   width="450" data-src="data/comps/modis_cot_all.png"></img>
+            <img style="float:right"  width="450" data-src="data/comps/modis_cer_all.png"></img>
+          </section>
+
+          <section>
+            <br>
+            <img style="float:left"   width="450" data-src="data/comps/modis_cot_trk.png"></img>
+            <img style="float:right"  width="450" data-src="data/comps/modis_cer_trk.png"></img>
+          </section>
+
+          <section>
+            <img style="float:center"  width="800" data-src="data/comps/cop_albedo_rtm_flux.png"></img>
+          </section>
+        </section>
+
+        <section data-transition="fade-in slide-out">
+          <h3>Results <span style="font-size:0.6em; color:SeaGreen">Above Clouds</span></h3>
+
+          <section>
+            <p style="font-size:48px; text-align:center; width:100%">
+              <span style="color:SeaGreen">2014-09-11</span> (<span style="color:SeaGreen">Above Clouds</span>)
+            </p>
+            <video loop data-autoplay src="data/comps/sample-video_20140911.mp4"></video>
+          </section>
+
+          <section>
+            <br>
+            <br>
+            <p style="font-size:32px">Broadband Flux Comparison</p>
+            <iframe data-src="http://me.hongchen.cz/slides/above-cloud.html" width=100% height=600, style="float:center"></iframe>
+          </section>
+
+          <section>
+            <br>
+            <p style="font-size:32px">Broadband Flux Comparison</p>
+            <img src="data/comps/f_broadband_20140911.png" width="1000"></video>
+          </section>
+
+          <section>
+            <br>
+            <p style="font-size:48px; color:SeaGreen">Clear Sky?</p>
+            <video controls data-autoplay src="data/comps/clear-sky_20140911.mp4"></video>
+          </section>
+
+          <section>
+            <br>
+            <p style="font-size:32px">Spectral Flux Comparison (Upwelling)</p>
+            <img src="data/comps/f_spectra_20140911.png" width="1000"></video>
+          </section>
+
+
+        </section>
+
+
+        <section data-transition="fade-in slide-out">
+          <h3>Results <span style="font-size:0.6em; color:SeaGreen">Below Clouds</span></h3>
+
+          <section>
+            <p style="font-size:48px; text-align:center; width:100%">
+              <span style="color:SeaGreen">2014-09-13</span> (<span style="color:SeaGreen">Below Clouds</span>)
+            </p>
+            <video loop data-autoplay src="data/comps/sample-video_20140913.mp4"></video>
+          </section>
+
+          <section>
+            <br>
+            <br>
+            <p><span style="font-size:32px; color:Black; font-weight:normal">SSFR Derived Snow/Ice Surface Albedo</p>
+            <iframe data-src="http://me.hongchen.cz/slides/albedo.html" width=100% height=450, style="float:center"></iframe>
+          </section>
+
+          <section>
+            <br>
+            <br>
+            <p style="font-size:32px">Broadband Flux Comparison</p>
+            <iframe data-src="http://me.hongchen.cz/slides/below-cloud.html" width=100% height=600, style="float:center"></iframe>
+          </section>
+
+          <section>
+            <br>
+            <p style="font-size:32px">Spectral Flux Comparison (Downwelling)</p>
+            <img src="data/comps/f_spectra_20140913.png" width="1000"></video>
+          </section>
+
+        </section>
+
+        <section>
+          <h3>Conclusion</h3>
+          <section>
+            <p style="color:Black; font-size:28px; text-align:left">1. The MODIS "1621" cloud products provide good estimate of cloud optical parameters over snow/ice in the Arctic.</p>
+            <br>
+            <p style="color:Black; font-size:28px; text-align:left">2. However, optically thin clouds remain undetected. These clouds constitute a significant fraction of the total cloud cover during ARISE cases.</p>
+            <br>
+            <p style="color:Black; font-size:28px; text-align:left">3. SSFR spectral irradiance measurements provide surface albedo, which can be used as boundary conditions for cloud retrievals and the calculation of cloud radiative effects.</p>
+          </section>
+
+        </section>
+
+        <section>
+          <h2>Questions?</h2>
+        </section>
+
+        <section data-transition="slide-in fade-out">
+          <h3>Extra <span style="font-size:0.6em; color:SeaGreen">Spectral Albedo</span></h3>
+          <section>
+            <img src="data/comps/snow-frac_100.png" width=100%></img>
+          </section>
+          <section>
+              <img src="data/comps/snow-frac_80.png" width=100%></img>
+          </section>
+          <section>
+              <img src="data/comps/snow-frac_70.png" width=100%></img>
+          </section>
+          <section>
+              <img src="data/comps/snow-frac_40.png" width=100%></img>
+          </section>
+
+          <section>
+            <br>
+            <div style="text-align:center; float:left">
+              <img src="data/comps/albedo_0640nm.png" width=450></img>
+            </div>
+            <div style="text-align:center; float:right">
+              <img src="data/comps/albedo_0860nm.png" width=450></img>
+            </div>
+          </section>
+
+          <section>
+            <br>
+            <div style="text-align:center; float:left">
+              <img src="data/comps/albedo_1240nm.png" width=450></img>
+            </div>
+            <div style="text-align:center; float:right">
+              <img src="data/comps/albedo_1630nm.png" width=450></img>
+            </div>
+          </section>
+
+        </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    <!--<script src='http://127.0.0.1:9001/js/socket.js'></script>-->
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        previewLinks: false,
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js',async: true},
+          { src: 'my/reveal.js/plugin/reveal.js-d3/reveald3.js'}
+        ]
+      });
+    </script>
+  </body>
+</html>
