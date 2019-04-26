@@ -1,5 +1,32 @@
-.backup
-test*
-data*
+# exceptions for er3t
+!tests
+!examples
+
+# system files
 .DS_Store
-haha*
+
+# python files
+*.pyc
+__pycache__
+*.egg-info
+dist
+build
+*other*
+
+# media files
+*graph*
+*.png
+*.mp4
+
+# tests
+*test*
+
+# data files
+*data*
+*.hdf
+*.h5
+*.nc
+*.pk
+
+# libRadtran
+randomseed
