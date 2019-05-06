@@ -87,12 +87,9 @@ def plot_figure_02(data):
             elif type0 == 'Dog':
                 fig.append_trace(trace0, 2, 1)
 
-
-    fig['layout'].update(barmode='stack')
+    fig['layout'].update(barmode='stack', paper_bgcolor='rgba(1,1,1,0.15)', plot_bgcolor='rgba(0,0,0,0)')
 
     plot(fig, filename='figure_02.html')
-
-
 
             </code></pre>
           </section>
