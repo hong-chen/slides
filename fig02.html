@@ -33,6 +33,7 @@
 
         <section>
           <h3>Figure 2 <span style="color:SeaGreen; font-size:0.6em"></span></h3>
+
           <section>
             <br>
             <p><span style="font-size:28px; color:Black; font-weight:normal"><a href="http://me.hongchen.cz/slides/data/proposal/figure_02.html">Click for Full View</a></p>
@@ -41,15 +42,57 @@
 
 
           <section>
-            <p><span style="font-size:28px; color:Black; font-weight:normal">Code for Data Processing</p>
-            <pre><code class="python" data-trim>
-
-            </code></pre>
-          </section>
-
-          <section>
             <p><span style="font-size:28px; color:Black; font-weight:normal">Code for Plotting</p>
             <pre><code class="python" data-trim>
+
+def plot_figure_02(data):
+
+    months = [data['month'][i] for i in sorted(data['month'].keys())]
+
+    fig = tools.make_subplots(rows=2, cols=1, subplot_titles=('Cat', 'Dog'))
+
+    for type0 in ['Cat', 'Dog']:
+
+        for key in data[type0].keys():
+
+            color_strs  = key.lower().replace('/', ' ').split()
+            color_objs = []
+            try:
+                for color_str in color_strs:
+                    color_objs.append(Color(color_str))
+            except:
+                print('Warning [plot_figure]: Cannot recognize color %s.' % color_str)
+
+            Ncolor = len(color_objs)
+            if Ncolor == 1:
+                color_hex      = color_objs[0].hex_l
+                color_line_hex = color_hex
+            elif Ncolor >= 2:
+                color_hex      = color_objs[0].hex_l
+                color_line_hex = color_objs[1].hex_l
+            else:
+                color_hex      = Color('gray').hex_l
+                color_line_hex = Color('gray').hex_l
+
+            trace0 = go.Bar(
+                x = months,
+                y = list(data[type0][key]),
+                marker=dict(
+                    line = dict(color=color_line_hex, width=2),
+                    color=color_hex),
+                name = key)
+
+            if type0 == 'Cat':
+                fig.append_trace(trace0, 1, 1)
+            elif type0 == 'Dog':
+                fig.append_trace(trace0, 2, 1)
+
+
+    fig['layout'].update(barmode='stack')
+
+    plot(fig, filename='figure_02.html')
+
+
 
             </code></pre>
           </section>
