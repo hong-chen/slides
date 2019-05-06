@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Data Incubator Proposal - Chen, Hong</title>
+
+    <meta name="description" content="Presentation">
+    <meta name="author" content="Hong Chen">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="my/reveal.js/css/theme/science.css" id="theme">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h3>Figure 2 <span style="color:SeaGreen; font-size:0.6em"></span></h3>
+          <section>
+            <br>
+            <p><span style="font-size:28px; color:Black; font-weight:normal"><a href="http://me.hongchen.cz/slides/data/proposal/figure_02.html">Click for Full View</a></p>
+            <iframe data-src="data/proposal/figure_02.html" width=100% height=450, style="float:center"></iframe>
+          </section>
+
+
+          <section>
+            <p><span style="font-size:28px; color:Black; font-weight:normal">Code for Data Processing</p>
+            <pre><code class="python" data-trim>
+
+            </code></pre>
+          </section>
+
+          <section>
+            <p><span style="font-size:28px; color:Black; font-weight:normal">Code for Plotting</p>
+            <pre><code class="python" data-trim>
+
+            </code></pre>
+          </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        controlsTutorial: true,
+        controlsLayout: 'bottom-right',
+        controlsBackArrows: 'faded',
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        previewLinks: false,
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js',async: true},
+          { src: 'my/reveal.js/plugin/reveal.js-d3/reveald3.js'}
+        ]
+      });
+    </script>
+  </body>
+</html>
