@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Data Incubator Proposal - Chen, Hong</title>
+
+    <meta name="description" content="Presentation">
+    <meta name="author" content="Hong Chen">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="my/reveal.js/css/theme/science.css" id="theme">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h3>Figure 1 <span style="color:SeaGreen; font-size:0.6em"></span></h3>
+          <section>
+            <br>
+            <p><span style="font-size:28px; color:Black; font-weight:normal"><a href="http://me.hongchen.cz/slides/data/proposal/figure_01.html">Austin Animal Center Outcomes</a></p>
+            <iframe data-src="data/proposal/figure_01.html" width=100% height=450, style="float:center"></iframe>
+          </section>
+
+
+          <section>
+            <p><span style="font-size:28px; color:Black; font-weight:normal">Code for Data Processing</p>
+            <pre><code class="python" data-trim>
+def dtime_to_jday(dtime):
+
+    jday = (dtime - dtdt(1, 1, 1)).total_seconds()/86400.0 + 1.0
+
+    return jday
+
+
+def jday_to_dtime(jday):
+
+    dtime = dtdt(1, 1, 1) + dt.timedelta(seconds=(jday-1)*86400.0)
+
+    return dtime
+
+
+class austin_pet_outcome:
+
+
+    def __init__(self, fname):
+
+        self.fname = fname
+
+        vnames = ['animal_id', 'name', 'datetime', 'monthyear', 'date_of_birth', \
+                  'outcome_type', 'outcome_subtype', 'animal_type', 'sex_upon_outcome', \
+                  'age_upon_outcome', 'breed', 'color']
+
+        dtype = {vname:'str' for vname in vnames}
+
+        self.data_pd = pd.read_csv(fname, na_values=[''], skiprows=1, header=None, names=vnames, dtype=dtype)
+
+        self.Nrow    = len(self.data_pd.index)
+        self.Ncol    = len(vnames)
+
+        self.data    = {}
+        self.cal_jday()
+        self.cal_age()
+
+
+    def cal_jday(self):
+
+        jday  = np.zeros(self.Nrow, dtype=np.float64)
+        for i in range(self.Nrow):
+            try:
+                dtime0  = dtdt.strptime(self.data_pd['datetime'].iloc[i], '%m/%d/%Y %I:%M:%S %p')
+                jday[i] = dtime_to_jday(dtime0)
+            except:
+                print('Warning [austin_pet_outcome.cal_jday]: Encounter invalid datetime string \'%s\'.' % (self.data_pd['datetime'][i]))
+                jday[i] = np.nan
+        self.data['jday'] = jday
+
+
+    def cal_age(self):
+
+        age  = np.zeros(self.Nrow, dtype=np.float64)
+        for i in range(self.Nrow):
+            try:
+                dtime0  = dtdt.strptime(self.data_pd['date_of_birth'].iloc[i], '%m/%d/%Y')
+                dtime1  = dtdt.strptime(self.data_pd['datetime'].iloc[i], '%m/%d/%Y %I:%M:%S %p')
+                age[i]  = (dtime1-dtime0).days + 1.0
+            except:
+                print('Warning [austin_pet_outcome.cal_age]: Encounter invalid datetime string \'%s\'.' % (self.data_pd['date_of_birth'][i]))
+                age[i] = np.nan
+        self.data['age'] = age
+
+def prepare_data_01():
+
+    fname  = 'data/animal/Austin_Animal_Center_Outcomes.csv'
+    f0     = austin_pet_outcome(fname)
+
+    # years
+    years = [str(year) for year in np.arange(2014, 2019)]
+
+    # types
+    logic     = (f0.data_pd['animal_type'].notnull())
+    pet_types = list(f0.data_pd['animal_type'][logic].unique())
+
+    # prepare data
+    data = OD()
+    for year in years:
+        data0  = []
+
+        year_i     = int(year)
+        jday_s     = dtime_to_jday(dtdt(year_i  , 1, 1))
+        jday_e     = dtime_to_jday(dtdt(year_i+1, 1, 1))
+        logic_year = (f0.data['jday']>=jday_s) & (f0.data['jday']<jday_e)
+        dset_year  = f0.data_pd[logic_year]
+
+        for pet_type in pet_types:
+
+            logic_type  = dset_year['animal_type'] == pet_type
+            dset_type   = dset_year[logic_type]
+
+            breed_count  = dset_type['breed'].value_counts()
+
+            breed_number0 = np.array(breed_count.tolist())
+            breed_types0  = list(breed_count.keys())
+            breed_age0    = np.zeros(breed_number0.size, dtype=np.float64)
+            breed_adp0    = np.zeros(breed_number0.size, dtype=np.float64)
+
+            logic_breed  = (breed_number0 >= 10.0)
+            indices_breed= np.where(logic_breed)[0]
+            breed_number = breed_number0[indices_breed]
+            breed_types  = [breed_types0[i] for i in indices_breed]
+            breed_age    = breed_age0[indices_breed]
+            breed_adp    = breed_adp0[indices_breed]
+
+            for i, breed in enumerate(breed_types):
+                breed_age[i]  = f0.data['age'][logic_year][logic_type][dset_type['breed']==breed].mean() / 365.25
+                breed_adp[i]  = dset_type[dset_type['breed']==breed]['outcome_type'].str.contains('doption').sum() / breed_number[i]
+
+            data_dict = {
+                'x': list(breed_age),
+                'y': list(breed_adp),
+                'mode': 'markers',
+                'text': list(breed_types),
+                'marker': {
+                    'sizemode': 'area',
+                    'sizeref': 1,
+                    'size': list(breed_number)
+                },
+                'name': pet_type
+            }
+            data0.append(data_dict)
+        data[str(year)] = data0
+
+    return data
+            </code></pre>
+          </section>
+
+          <section>
+            <p><span style="font-size:28px; color:Black; font-weight:normal">Code for Plotting</p>
+            <pre><code class="python" data-trim>
+def plot_figure_01(data):
+
+    values = list(data.keys())
+
+    figure = {
+        'data'  : data[list(data.keys())[0]],
+        'layout': {},
+        'frames': []
+    }
+
+    figure['layout']['xaxis'] = {'title': 'Age of Pet upon Adoption (Year)', 'type':'log'}
+    figure['layout']['yaxis'] = {'title': 'Adoption Rate'}
+    figure['layout']['hovermode'] = 'closest'
+    figure['layout']['sliders'] = \
+    {
+        'args': \
+        [
+            'transition', {
+                'duration': 400,
+                'easing': 'cubic-in-out'
+                }
+        ],
+        'initialValue': values[0],
+        'plotlycommand': 'animate',
+        'values': values,
+        'visible': True
+    }
+    figure['layout']['updatemenus'] = \
+    [
+        {
+        'buttons':
+            [
+                {
+                'args': [None, {'frame': {'duration': 500, 'redraw': False},
+                                'fromcurrent': True, 'transition': {'duration': 1200, 'easing': 'quadratic-in-out'}}],
+                'label': 'Play',
+                'method': 'animate'
+                },
+                {
+                'args': [[None], {'frame': {'duration': 0, 'redraw': False}, 'mode': 'immediate',
+                                  'transition': {'duration': 0}}],
+                'label': 'Pause',
+                'method': 'animate'
+                }
+            ],
+            'direction': 'left',
+            'pad': {'r': 10, 't': 87},
+            'showactive': False,
+            'type': 'buttons',
+            'x': 0.1,
+            'xanchor': 'right',
+            'y': 0,
+            'yanchor': 'top'
+        }
+    ]
+
+    sliders_dict = \
+    {
+        'active': 0,
+        'yanchor': 'top',
+        'xanchor': 'left',
+        'currentvalue':
+        {
+            'font': {'size': 20},
+            'prefix': 'Year:',
+            'visible': True,
+            'xanchor': 'right'
+        },
+        'transition': {'duration': 300, 'easing': 'cubic-in-out'},
+        'pad': {'b': 10, 't': 50},
+        'len': 0.9,
+        'x': 0.1,
+        'y': 0,
+        'steps': []
+    }
+
+    for value in values:
+
+        frame = {'data': data[value], 'name': str(value)}
+
+        figure['frames'].append(frame)
+        slider_step = \
+        {'args': \
+                [
+                    [value],
+                    {'frame': {'duration': 300, 'redraw': False},
+                    'mode': 'immediate',
+                    'transition': {'duration': 300}}
+                ],
+         'label': value,
+         'method': 'animate'}
+        sliders_dict['steps'].append(slider_step)
+
+
+    figure['layout']['sliders'] = [sliders_dict]
+
+    plot(figure, filename='figure_01.html')
+
+            </code></pre>
+
+          </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        controlsTutorial: true,
+        controlsLayout: 'bottom-right',
+        controlsBackArrows: 'faded',
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        previewLinks: false,
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js',async: true},
+          { src: 'my/reveal.js/plugin/reveal.js-d3/reveald3.js'}
+        ]
+      });
+    </script>
+  </body>
+</html>
