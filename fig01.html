@@ -35,111 +35,173 @@
           <h3>Figure 1 <span style="color:SeaGreen; font-size:0.6em"></span></h3>
           <section>
             <br>
-            <p><span style="font-size:28px; color:Black; font-weight:normal"><a href="http://me.hongchen.cz/slides/data/proposal/figure_01.html">Click for Full View</a></p>
-            <iframe data-src="data/proposal/figure_01.html" width=100% height=450, style="float:center"></iframe>
+            <video data-src="data/proposal/cam01.mp4" loop data-autoplay  width=800></video>
           </section>
 
           <section>
             <p><span style="font-size:28px; color:Black; font-weight:normal">Code for Plotting</p>
             <pre><code class="python" data-trim>
-def plot_figure_01(data):
+import os
+import sys
+import glob
+import datetime
+import multiprocessing as mp
+import h5py
+from pyhdf.SD import SD, SDC
+import numpy as np
+from scipy import interpolate
+from scipy.io import readsav
+import matplotlib as mpl
+# mpl.use('Agg')
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FixedLocator
+from matplotlib import rcParams
+import matplotlib.gridspec as gridspec
+import matplotlib.patches as mpatches
+# import cartopy.crs as ccrs
 
-    values = list(data.keys())
+extent = [
+        [123.13775919999999, 123.1977592       , 18.5404793        , 18.4804793],
+        [123.14097350000002, 123.20097350000002, 18.540811         , 18.480811],
+        [123.14418889999999, 123.20418889999999, 18.541142800000003, 18.4811428],
+        [123.1474044       , 123.2074044       , 18.5414728        , 18.4814728],
+        [123.15061979999999, 123.21061979999999, 18.541804000000003, 18.481804],
+        [123.157053        , 123.217053        , 18.542464600000002, 18.4824646],
+        [123.1602707       , 123.2202707       , 18.5427929        , 18.482792899999996],
+        [123.16348959999999, 123.2234896       , 18.5431189        , 18.483118899999997],
+        [123.16670900000001, 123.22670900000001, 18.5434444        , 18.483444399999996],
+        [123.169929        , 123.229929        , 18.543769800000003, 18.4837698]
+        ]
 
-    figure = {
-        'data'  : data[list(data.keys())[0]],
-        'layout': {},
-        'frames': []
-    }
+lon_p3 = np.array([123.16775919999999, 123.17097350000002, 123.17418889999999, 123.1774044, \
+                   123.18061979999999, 123.187053        , 123.1902707       , 123.19348959999999, \
+                   123.19670900000001, 123.199929])
 
-    figure['layout']['xaxis'] = {'title': 'Age of Pet upon Adoption (Year)', 'type':'log'}
-    figure['layout']['yaxis'] = {'title': 'Adoption Rate'}
-    figure['layout']['hovermode'] = 'closest'
-    figure['layout']['sliders'] = \
-    {
-        'args': \
-        [
-            'transition', {
-                'duration': 400,
-                'easing': 'cubic-in-out'
-                }
-        ],
-        'initialValue': values[0],
-        'plotlycommand': 'animate',
-        'values': values,
-        'visible': True
-    }
-    figure['layout']['updatemenus'] = \
-    [
-        {
-        'buttons':
-            [
-                {
-                'args': [None, {'frame': {'duration': 500, 'redraw': False},
-                                'fromcurrent': True, 'transition': {'duration': 1200, 'easing': 'quadratic-in-out'}}],
-                'label': 'Play',
-                'method': 'animate'
-                },
-                {
-                'args': [[None], {'frame': {'duration': 0, 'redraw': False}, 'mode': 'immediate',
-                                  'transition': {'duration': 0}}],
-                'label': 'Pause',
-                'method': 'animate'
-                }
-            ],
-            'direction': 'left',
-            'pad': {'r': 10, 't': 87},
-            'showactive': False,
-            'type': 'buttons',
-            'x': 0.1,
-            'xanchor': 'right',
-            'y': 0,
-            'yanchor': 'top'
-        }
-    ]
+lat_p3 = np.array([18.5104793        , 18.510811         , 18.511142800000002, 18.5114728, \
+                   18.511804         , 18.5124646        , 18.512792899999997, 18.5131189, \
+                   18.513444399999997, 18.513769800000002])
 
-    sliders_dict = \
-    {
-        'active': 0,
-        'yanchor': 'top',
-        'xanchor': 'left',
-        'currentvalue':
-        {
-            'font': {'size': 20},
-            'prefix': 'Year:',
-            'visible': True,
-            'xanchor': 'right'
-        },
-        'transition': {'duration': 300, 'easing': 'cubic-in-out'},
-        'pad': {'b': 10, 't': 50},
-        'len': 0.9,
-        'x': 0.1,
-        'y': 0,
-        'steps': []
-    }
+alt_p3 = np.array([5810.0, 5810.0, 5810.0, 5810.0, 5809.0, 5809.0, 5809.0, 5809.0, 5809.0, 5808.0])
 
-    for value in values:
+lon_cld = np.array([
+    [123.183445, np.nan    , np.nan   ],
+    [123.182385, np.nan    , np.nan   ],
+    [123.181939, np.nan    , np.nan   ],
+    [123.181301, 123.194255, np.nan   ],
+    [123.180510, 123.193429, np.nan   ],
+    [123.179579, 123.192174, 123.201910],
+    [123.179074, 123.191680, 123.201449],
+    [123.178310, 123.190726, 123.200944],
+    [123.177595, 123.189967, 123.200458],
+    [123.177180, 123.189455, 123.199948]
+    ])
 
-        frame = {'data': data[value], 'name': str(value)}
+lat_cld = np.array([
+    [18.517434, np.nan   , np.nan   ],
+    [18.517252, np.nan   , np.nan   ],
+    [18.517186, np.nan   , np.nan   ],
+    [18.516887, 18.496365, np.nan   ],
+    [18.516815, 18.496318, np.nan   ],
+    [18.516922, 18.496441, 18.527415],
+    [18.516990, 18.496506, 18.527635],
+    [18.516757, 18.496122, 18.527287],
+    [18.516460, 18.495933, 18.526963],
+    [18.516470, 18.496090, 18.526952]
+    ])
 
-        figure['frames'].append(frame)
-        slider_step = \
-        {'args': \
-                [
-                    [value],
-                    {'frame': {'duration': 300, 'redraw': False},
-                    'mode': 'immediate',
-                    'transition': {'duration': 300}}
-                ],
-         'label': value,
-         'method': 'animate'}
-        sliders_dict['steps'].append(slider_step)
+def plot_image_sequence():
 
+    fnames = sorted(glob.glob('data/vk15-*.png'))
+    for i, fname in enumerate(fnames):
 
-    figure['layout']['sliders'] = [sliders_dict]
+        extent0 = [extent[i][0], extent[i][1], extent[i][3], extent[i][2]]
 
-    plot(figure, filename='figure_01.html')
+        img_data = mpl.image.imread(fname)
+        # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        fig = plt.figure(figsize=(8, 6))
+        ax1 = fig.add_subplot(111)
+        ax1.imshow(img_data[::-1, :, :], extent=extent0, origin='lower')
+        ax1.plot([lon_p3[i], lon_cld[i, 0]], [lat_p3[i], lat_cld[i, 0]], color='green' , lw=1, ls='--')
+        ax1.plot([lon_p3[i], lon_cld[i, 1]], [lat_p3[i], lat_cld[i, 1]], color='blue'  , lw=1, ls='--')
+        ax1.plot([lon_p3[i], lon_cld[i, 2]], [lat_p3[i], lat_cld[i, 2]], color='purple', lw=1, ls='--')
+        ax1.scatter(lon_cld[i, 0], lat_cld[i, 0], c='green', marker='o', s=80, lw=0)
+        ax1.scatter(lon_cld[i, 1], lat_cld[i, 1], c='blue', marker='o', s=80, lw=0)
+        ax1.scatter(lon_cld[i, 2], lat_cld[i, 2], c='purple', marker='o', s=80, lw=0)
 
+        ax1.text(lon_p3[i]    , lat_p3[i]-0.003    , 'Aircraft', color='red'   , ha='center', va='center', fontsize=12)
+        ax1.text(lon_cld[i, 0], lat_cld[i, 0]-0.003, 'Cloud #1', color='green' , ha='center', va='center', fontsize=12)
+        ax1.text(lon_cld[i, 1], lat_cld[i, 1]-0.003, 'Cloud #2', color='blue'  , ha='center', va='center', fontsize=12)
+        ax1.text(lon_cld[i, 2], lat_cld[i, 2]-0.003, 'Cloud #3', color='purple', ha='center', va='center', fontsize=12)
+
+        ax1.set_title('Image Sequence (#%d)' % (i+1))
+        ax1.set_xlabel('Longitude [$^\circ$]')
+        ax1.set_ylabel('Latitude [$^\circ$]')
+        ax1.ticklabel_format(useOffset=False)
+        plt.savefig(fname.replace('data/vk15-', ''))
+        plt.close(fig)
+        # ---------------------------------------------------------------------
+
+def cal_distance_on_earth(lon0, lat0, lon1, lat1, R_earth=6.3781e6):
+
+    delta_lat = np.deg2rad(lat0-lat1)
+    delta_lon = np.deg2rad(lon0-lon1)
+    mean_lat  = np.deg2rad((lat0+lat1)/2.0)
+
+    dist = R_earth * np.sqrt(delta_lat**2 + (np.cos(mean_lat)*delta_lon)**2)
+
+    return dist
+
+def cal_cloud_top_height(lon_a, lat_a, alt_a, lon_c, lat_c):
+
+    alt_c = np.zeros(alt_a.size, dtype=np.float64)
+    alt_c[0] = np.nan
+    for i in range(1, alt_a.size):
+        dw = cal_distance_on_earth(lon_a[i], lat_a[i], lon_a[i-1], lat_a[i-1])
+        dW = -cal_distance_on_earth(lon_c[i], lat_c[i], lon_c[i-1], lat_c[i-1])
+        alt_c[i] = -(alt_a[i]+alt_a[i-1])/2.0 / (dw/dW-1.0)
+
+    return alt_c
+
+def plot_cloud_top_height():
+
+    cth1 = cal_cloud_top_height(lon_p3, lat_p3, alt_p3, lon_cld[:, 0], lat_cld[:, 0])
+    cth2 = cal_cloud_top_height(lon_p3, lat_p3, alt_p3, lon_cld[:, 1], lat_cld[:, 1])
+    cth3 = cal_cloud_top_height(lon_p3, lat_p3, alt_p3, lon_cld[:, 2], lat_cld[:, 2])
+
+    xx = np.arange(1, cth1.size+1)
+
+    # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    fig = plt.figure(figsize=(8, 6))
+    ax1 = fig.add_subplot(111)
+    ax1.scatter(xx, alt_p3/1000.0, c='red'   , lw=0.0, s=100, alpha=0.9)
+    ax1.scatter(xx, cth1/1000.0  , c='green' , lw=0.0, s=100, alpha=0.9)
+    ax1.scatter(xx, cth2/1000.0  , c='blue'  , lw=0.0, s=100, alpha=0.9)
+    ax1.scatter(xx, cth3/1000.0  , c='purple', lw=0.0, s=100, alpha=0.9)
+
+    ax1.plot(xx, alt_p3/1000.0, c='red'   , lw=0.8, alpha=0.9, ls='--')
+    ax1.plot(xx, cth1/1000.0  , c='green' , lw=0.8, alpha=0.9, ls='--')
+    ax1.plot(xx, cth2/1000.0  , c='blue'  , lw=0.8, alpha=0.9, ls='--')
+    ax1.plot(xx, cth3/1000.0  , c='purple', lw=0.8, alpha=0.9, ls='--')
+    ax1.set_xlim((1, 10))
+    ax1.set_ylim((0, 8))
+    ax1.set_xlabel('Image Sequence Number')
+    ax1.set_ylabel('Altitude [km]')
+    patches_legend = [
+                mpatches.Patch(color='red'      , label='Aircraft'),
+                mpatches.Patch(color='green'    , label='Cloud #1'),
+                mpatches.Patch(color='blue'     , label='Cloud #2'),
+                mpatches.Patch(color='purple'   , label='Cloud #3'),
+                ]
+    ax1.legend(handles=patches_legend, bbox_to_anchor=(0., 1.01, 1., .102), loc=3, ncol=len(patches_legend), mode="expand", borderaxespad=0., frameon=False, handletextpad=0.2, fontsize=16)
+    plt.savefig('cam02.png', bbox_inches='tight')
+    plt.close(fig)
+    # ---------------------------------------------------------------------
+
+if __name__ == '__main__':
+
+    plot_image_sequence()
+
+    plot_cloud_top_height()
             </code></pre>
 
           </section>
