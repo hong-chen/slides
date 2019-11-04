@@ -32,10 +32,16 @@
       <div class="slides">
 
         <section>
+          <h2>Figure 01</h2>
+          <br>
+          <p style="line-height:70%"><span style="font-size:18px; color:Black">Press Space Key to Proceed</p>
+        </section>
+
+        <section>
           <h3>Figure 1 <span style="color:SeaGreen; font-size:0.6em"></span></h3>
           <section>
             <br>
-            <video data-src="data/proposal/cam01.mp4" loop data-autoplay  width=800></video>
+            <video data-src="data/proposal/cam01.mp4" data-autoplay width=700></video>
           </section>
 
           <section>
@@ -224,6 +230,8 @@ if __name__ == '__main__':
         slideNumber: true,
         transition: 'slide', // none/fade/slide/convex/concave/zoom
         previewLinks: false,
+        autoPlayMedia: true,
+        loop: true,
         // More info https://github.com/hakimel/reveal.js#dependencies
         dependencies: [
           { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
