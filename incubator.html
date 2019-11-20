@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Data Incubator - Hong Chen</title>
+
+    <meta name="description" content="Presentation">
+    <meta name="author" content="Hong Chen">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="my/reveal.js/css/theme/science.css" id="theme">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section data-background-video='data/proposal/birdview.mp4' data-background-opacity=0.3 data-background-video-muted=true data-background-video-loop>
+          <h4>Stereographic Reconstruction of 3-D Landscape Geometry from Airborne Imagery</h4>
+          <br>
+          <p><span style="font-size:16px; color:Gray">Presented by</span></p>
+          <p><span style="font-size:22px">Hong Chen</span></p>
+        </section>
+
+        <section>
+          <h3>NASA Airborne Imagery<span style="color:SeaGreen; font-size:0.6em"></span></h3>
+          <section>
+            <br>
+            <video data-autoplay src="data/proposal/flight-video.mp4" loop></video>
+          </section>
+        </section>
+
+        <section>
+          <h3>Stereographic Reconstruction<span style="color:SeaGreen; font-size:0.6em"></span></h3>
+          <section>
+            <br>
+            <img style="float:center"  width="1000" data-src="data/proposal/illustration.png"></img>
+          </section>
+        </section>
+
+        <section>
+          <h3>Preliminary Results<span style="color:SeaGreen; font-size:0.6em"></span></h3>
+          <section>
+            <br>
+            <video data-autoplay src="data/proposal/cth.mp4"  width=1500></video>
+          </section>
+
+          <section>
+            <br>
+            <img style="float:center"  width="580" data-src="data/proposal/cloud-detection.png"></img>
+          </section>
+        </section>
+
+        <section>
+          <h3>Summary and Future Work</h3>
+          <section data-background-video='data/proposal/birdview.mp4' data-background-opacity=0.3 data-background-video-muted=true>
+            <br>
+            <p style="color:Black; font-size:28px; text-align:left">1. The prelimary study of Cloud Top Height (CTH) has shown that the altitude of an object can be derived from successive airborne images using stereographic reconstruction.</p>
+            <br>
+            <p style="color:Black; font-size:28px; text-align:left">2. The bias study and error analysis will be performed through the comparison between the estimated CTH and the direct measurements of CTH from other airborne instruments.</p>
+            <br>
+            <p style="color:Black; font-size:28px; text-align:left">3. Object detection and object tracking algorithms, e.g., Principal Component Analysis (PCA), will be applied to automatically identify and track objects from successive images.</p>
+          </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        controlsTutorial: true,
+        controlsLayout: 'bottom-right',
+        controlsBackArrows: 'faded',
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        previewLinks: false,
+        autoPlayMedia: true,
+        loop: true,
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js',async: true},
+          { src: 'my/reveal.js/plugin/reveal.js-d3/reveald3.js'}
+        ]
+      });
+    </script>
+  </body>
+</html>
